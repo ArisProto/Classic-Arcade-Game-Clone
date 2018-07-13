@@ -53,7 +53,7 @@ ladybugEnemies.push(ladyBug5);
 // a handleInput() method.
 
 const Player = function () {
-  GameObjects.call(this, Player);
+  ArcadeObjects.call(this, Player);
   this.x = 200;
   this.y = 380;
   this.sprite = 'images/char-boy.png';
