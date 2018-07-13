@@ -22,15 +22,28 @@ var Enemy = function(x, y) {
 };
 
 Enemy.prototype.constructor = Enemy;
-Enemy.prototype = Object.create(ArcadeObjects.prototype); // inherits from ArcadeObjects
+Enemy.prototype = Object.create(ArcadeObjects.prototype);    // inherits from ArcadeObjects
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
+
 Enemy.prototype.update = function(dt) {
+  this.y = 60;
+  for (let i = 0; i < allEnemies.length; i++) {
+    allEnemies[i].startPoint = (Math.floor(Math.random() * (-2000)) + 2);
+    allEnemies[i].y = allEnemies[i].y + 80;   // y coordinate of the ladybugs
+    if (allEnemies[i].y > 220) {
+        allEnemies[i].y = 60;
+    }
+    if (allEnemies[i].x >= this.endingPoint) {
+        allEnemies[i].x = allEnemies[i].startingPoint;    // keep the ladybugs inbounds
+    }
+  }
+};
+
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-};
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
