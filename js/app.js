@@ -1,21 +1,21 @@
 // Enemies our player must avoid
 
 var ArcadeObjects = function (x, y) {
-    this.x = 0;
-    this.y = 0;
-    this.startPoint = 0;
-    this.endPoint = 550;
-    this.sprite;
+  this.x = 0;
+  this.y = 0;
+  this.startPoint = 0;
+  this.endPoint = 550;
+  this.sprite;
 };
 
-ArcadeObjects.call(this, Enemy);
 var Enemy = function() {
+  ArcadeObjects.call(this, Enemy);
+  this.sprite = 'images/enemy-bug.png';
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png';
 };
 
 // Update the enemy's position, required method for game
