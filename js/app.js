@@ -60,6 +60,10 @@ var Player = function () {
 Player.prototype.constructor = Player;
 Player.prototype = Object.create(ArcadeObjects); // inherits from ArcadeObjects
 
+Player.prototype.render = function () {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
