@@ -1,4 +1,11 @@
 // Enemies our player must avoid
+
+var arcadeObjects = function (x, y) {
+    this.startPoint = 0;
+    this.endPoint = 550;
+    this.sprite;
+};
+
 var Enemy = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
