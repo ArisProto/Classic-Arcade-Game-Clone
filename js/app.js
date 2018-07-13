@@ -11,7 +11,7 @@ var ArcadeObjects = function (x, y) {
 var Enemy = function() {
   ArcadeObjects.call(this, Enemy);
   this.sprite = 'images/enemy-bug.png';
-  this.x = (Math.floor(Math.random() * (-1500)) + 2); //give it movement | y = 0
+  this.x = (Math.floor(Math.random() * (-1500)) + 2); // give it movement | y = 0
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
@@ -19,7 +19,8 @@ var Enemy = function() {
     // a helper we've provided to easily load images
 };
 
-Enemy.prototype = Object.create(ArcadeObjects.prototype);
+Enemy.prototype.constructor = Enemy;
+Enemy.prototype = Object.create(ArcadeObjects.prototype); // inherits from ArcadeObjects
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
