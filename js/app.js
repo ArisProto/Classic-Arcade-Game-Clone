@@ -30,7 +30,7 @@ Enemy.prototype = Object.create(ArcadeObjects.prototype);    // inherits from Ar
 Enemy.prototype.update = function(dt) {
   this.y = 60;
   for (let i = 0; i < allEnemies.length; i++) {
-    allEnemies[i].startPoint = (Math.floor(Math.random() * (-2000)) + 2);
+    allEnemies[i].startPoint = (Math.floor(Math.random() * (-1800)) + 5);
     allEnemies[i].y = allEnemies[i].y + 80;   // y coordinate of the ladybugs
     if (allEnemies[i].y > 220) {
         allEnemies[i].y = 60;
