@@ -19,6 +19,8 @@ var Enemy = function() {
     // a helper we've provided to easily load images
 };
 
+Enemy.prototype = Object.create(ArcadeObjects.prototype);
+
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
