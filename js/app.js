@@ -8,7 +8,7 @@ const ArcadeObjects = function (x, y) {
   this.sprite;
 };
 
-const Enemy = function() {
+const Enemy = function(x, y) {
   ArcadeObjects.call(this, Enemy);
   this.sprite = 'images/enemy-bug.png';
   this.x = (Math.floor(Math.random() * (-1500)) + 2); // give it movement | y = 0
