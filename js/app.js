@@ -1,5 +1,7 @@
 // Enemies our player must avoid
 
+var allEnemies = [];
+
 var ArcadeObjects = function (x, y) {
   this.x = 0;
   this.y = 0;
@@ -7,8 +9,6 @@ var ArcadeObjects = function (x, y) {
   this.endingPoint = 550;
   this.sprite;
 };
-
-var allEnemies = [];
 
 var Enemy = function(x, y) {
   ArcadeObjects.call(this, Enemy);
