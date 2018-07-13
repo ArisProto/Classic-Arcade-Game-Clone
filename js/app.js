@@ -3,8 +3,8 @@
 var ArcadeObjects = function (x, y) {
   this.x = 0;
   this.y = 0;
-  this.startPoint = 0;
-  this.endPoint = 550;
+  this.startingPoint = 0;
+  this.endingPoint = 550;
   this.sprite;
 };
 
@@ -32,13 +32,19 @@ Enemy.prototype.update = function(dt) {
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
 
+var Player = function () {
+  GameObjects.call(this, Player);
+  this.x = 200;
+  this.y = 380;
+  this.sprite = 'images/char-boy.png';
+}
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
