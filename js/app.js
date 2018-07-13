@@ -1,6 +1,6 @@
 // Enemies our player must avoid
 
-var ArcadeObjects = function (x, y) {
+const ArcadeObjects = function (x, y) {
   this.x = 0;
   this.y = 0;
   this.startingPoint = 0;
@@ -8,7 +8,7 @@ var ArcadeObjects = function (x, y) {
   this.sprite;
 };
 
-var Enemy = function() {
+const Enemy = function() {
   ArcadeObjects.call(this, Enemy);
   this.sprite = 'images/enemy-bug.png';
   this.x = (Math.floor(Math.random() * (-1500)) + 2); // give it movement | y = 0
@@ -35,11 +35,11 @@ Enemy.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-var ladyBug1 = new Enemy();
-var ladyBug2 = new Enemy();
-var ladyBug3 = new Enemy();
-var ladyBug4 = new Enemy();
-var ladyBug5 = new Enemy();
+const ladyBug1 = new Enemy();
+const ladyBug2 = new Enemy();
+const ladyBug3 = new Enemy();
+const ladyBug4 = new Enemy();
+const ladyBug5 = new Enemy();
 allEnemies.push(ladyBug1);
 allEnemies.push(ladyBug2);
 allEnemies.push(ladyBug3);
@@ -50,7 +50,7 @@ allEnemies.push(ladyBug5);
 // This class requires an update(), render() and
 // a handleInput() method.
 
-var Player = function () {
+const Player = function () {
   GameObjects.call(this, Player);
   this.x = 200;
   this.y = 380;
@@ -68,7 +68,7 @@ Player.prototype.render = function () {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-
+const player = new Player();
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
