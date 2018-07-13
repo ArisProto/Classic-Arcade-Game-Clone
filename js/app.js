@@ -28,18 +28,14 @@ Enemy.prototype.constructor = Enemy;
 // Parameter: dt, a time delta between ticks
 
 Enemy.prototype.update = function(dt) {
-  this.y = 60;
-  for (let i = 0; i < allEnemies.length; i++) {
-    allEnemies[i].startPoint = (Math.floor(Math.random() * (-1800)) + 5);
-    allEnemies[i].y = allEnemies[i].y + 80;   // y coordinate of the ladybugs
-    if (allEnemies[i].y > 220) {
-        allEnemies[i].y = 60;
-    }
-    if (allEnemies[i].x >= this.endingPoint) {
-        allEnemies[i].x = allEnemies[i].startingPoint;    // keep the ladybugs inbounds
-    }
+  this.x = this.x + 101 * dt * this.multiplier;
+  if (this.y == player.y && (this.x > player.x - 20 && this.x < player.x + 20)) {  // collision check
+	player.reset();    // Reset the player to her original position
+	} if (this.x > 750) {
+  	this.reset();    // Reset enemy after leaving the board
   }
 };
+
 
 Enemy.prototype.reset = function() {
 	this.x = -200;
