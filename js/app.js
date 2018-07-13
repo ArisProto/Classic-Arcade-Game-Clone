@@ -79,6 +79,11 @@ var Player = function () {
   this.y = 380;
 };
 
+Player.prototype.reset = function() {   // Reset the Player
+  this.sprite = 'images/char-boy.png';
+	this.x = 200;
+	this.y = 380;
+
 Player.prototype = Object.create(ArcadeObjects); // inherits from ArcadeObjects
 Player.prototype.constructor = Player;
 
@@ -96,13 +101,11 @@ Player.prototype.handleInput = function(dir) {    // Change the player's positio
 	} else if (dir == 'right') {
 		this.x = this.x + 101;
 	} if (this.x < 0) {
-		// Player is off to the left side of the board, move the player
-		// back to zero
 		this.x = 0;
 	} else if (this.x > 606) {
-		// Player is off to the right side of the board, move the player
-		// back to the right-most square (606)
 		this.x = 606;
+  } else if (this.y > 404) {
+    this.reset();
   }
 };
 
