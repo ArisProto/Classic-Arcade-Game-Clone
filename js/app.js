@@ -95,7 +95,15 @@ Player.prototype.handleInput = function(dir) {    // Change the player's positio
 		this.x = this.x - 101;
 	} else if (dir == 'right') {
 		this.x = this.x + 101;
-	} 
+	} if (this.x < 0) {
+		// Player is off to the left side of the board, move the player
+		// back to zero
+		this.x = 0;
+	} else if (this.x > 606) {
+		// Player is off to the right side of the board, move the player
+		// back to the right-most square (606)
+		this.x = 606;
+  }
 };
 
 // Now instantiate your objects.
