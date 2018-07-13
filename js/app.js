@@ -36,17 +36,12 @@ Enemy.prototype.update = function(dt) {
   }
 };
 
-
 Enemy.prototype.reset = function() {
 	this.x = -200;
-	var speed = [220, 140, 60];
+	var speed = [240, 150, 40];
 	this.y = speed[Math.floor((Math.random() * 3))];
 	this.multiplier = Math.floor((Math.random() * 5) + 1);
 };
-
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
@@ -75,12 +70,6 @@ var Player = function () {
   this.y = 380;
 };
 
-Player.prototype.reset = function() {   // Reset the Player
-  this.sprite = 'images/char-boy.png';
-	this.x = 200;
-	this.y = 380;
-}
-
 Player.prototype = Object.create(ArcadeObjects); // inherits from ArcadeObjects
 Player.prototype.constructor = Player;
 
@@ -88,32 +77,38 @@ Player.prototype.render = function () {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Player.prototype.handleInput = function(dir) {    // Change the player's position based on the user keyboard input
-	if (dir == 'up') {
+Player.prototype.handleInput = function(direction) {    // Change the player's position based on the user keyboard input
+	if (direction == 'up') {
 		this.y = this.y - 80;
-	} else if (dir == 'down') {
+	} else if (direction == 'down') {
 		this.y = this.y + 80;
-	} else if (dir == 'left') {
+	} else if (direction == 'left') {
 		this.x = this.x - 101;
-	} else if (dir == 'right') {
+	} else if (direction == 'right') {
 		this.x = this.x + 101;
 	} if (this.x < 0) {
 		this.x = 0;
 	} else if (this.x > 606) {
 		this.x = 606;
   } else if (this.y > 404) {
-    this.reset();
+    this.reset();   // reset player to starting position if he moves down outside the canvas
   }
 };
 
+Player.prototype.reset = function() {   // Reset the Player
+  this.sprite = 'images/char-boy.png';
+	this.x = 200;
+	this.y = 380;
+}
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
 
 var player = new Player();
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
+
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
         37: 'left',
