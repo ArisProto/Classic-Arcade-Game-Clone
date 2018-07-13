@@ -57,7 +57,7 @@ const Player = function () {
   this.x = 200;
   this.y = 380;
   this.sprite = 'images/char-boy.png';
-}
+};
 
 Player.prototype.constructor = Player;
 Player.prototype = Object.create(ArcadeObjects); // inherits from ArcadeObjects
