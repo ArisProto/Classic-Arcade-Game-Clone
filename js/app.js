@@ -8,7 +8,7 @@ const ArcadeObjects = function (x, y) {
   this.sprite;
 };
 
-const ladybugEnemies = [];
+const allEnemies = [];
 
 const Enemy = function(x, y) {
   ArcadeObjects.call(this, Enemy);
@@ -42,11 +42,11 @@ const ladyBug2 = new Enemy();
 const ladyBug3 = new Enemy();
 const ladyBug4 = new Enemy();
 const ladyBug5 = new Enemy();
-ladybugEnemies.push(ladyBug1);
-ladybugEnemies.push(ladyBug2);
-ladybugEnemies.push(ladyBug3);
-ladybugEnemies.push(ladyBug4);
-ladybugEnemies.push(ladyBug5);
+allEnemies.push(ladyBug1);
+allEnemies.push(ladyBug2);
+allEnemies.push(ladyBug3);
+allEnemies.push(ladyBug4);
+allEnemies.push(ladyBug5);
 
 // Now write your own player class
 // This class requires an update(), render() and
