@@ -35,16 +35,16 @@ Enemy.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-var enemy1 = new Enemy();
-var enemy2 = new Enemy();
-var enemy3 = new Enemy();
-var enemy4 = new Enemy();
-var enemy5 = new Enemy();
-allEnemies.push(enemy1);
-allEnemies.push(enemy2);
-allEnemies.push(enemy3);
-allEnemies.push(enemy4);
-allEnemies.push(enemy5);
+var ladyBug1 = new Enemy();
+var ladyBug2 = new Enemy();
+var ladyBug3 = new Enemy();
+var ladyBug4 = new Enemy();
+var ladyBug5 = new Enemy();
+allEnemies.push(ladyBug1);
+allEnemies.push(ladyBug2);
+allEnemies.push(ladyBug3);
+allEnemies.push(ladyBug4);
+allEnemies.push(ladyBug5);
 
 // Now write your own player class
 // This class requires an update(), render() and
