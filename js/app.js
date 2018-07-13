@@ -3,11 +3,11 @@
 var allEnemies = [];
 
 var ArcadeObjects = function (x, y) {
+  this.sprite;
   this.x = 0;
   this.y = 0;
   this.startingPoint = 0;
   this.endingPoint = 550;
-  this.sprite;
 };
 
 var Enemy = function(x, y) {
@@ -21,8 +21,8 @@ var Enemy = function(x, y) {
     // a helper we've provided to easily load images
 };
 
-Enemy.prototype.constructor = Enemy;
 Enemy.prototype = Object.create(ArcadeObjects.prototype);    // inherits from ArcadeObjects
+Enemy.prototype.constructor = Enemy;
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -72,11 +72,11 @@ var Player = function () {
   this.y = 380;
 };
 
-Player.prototype.constructor = Player;
 Player.prototype = Object.create(ArcadeObjects); // inherits from ArcadeObjects
+Player.prototype.constructor = Player;
 
 Player.prototype.render = function () {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 // Now instantiate your objects.
