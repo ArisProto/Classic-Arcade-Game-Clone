@@ -54,9 +54,9 @@ allEnemies.push(ladyBug5);
 
 const Player = function () {
   ArcadeObjects.call(this, Player);
+  this.sprite = 'images/char-boy.png';
   this.x = 200;
   this.y = 380;
-  this.sprite = 'images/char-boy.png';
 };
 
 Player.prototype.constructor = Player;
