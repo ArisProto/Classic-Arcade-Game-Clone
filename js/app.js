@@ -83,6 +83,7 @@ Player.prototype.reset = function() {   // Reset the Player
   this.sprite = 'images/char-boy.png';
 	this.x = 200;
 	this.y = 380;
+}
 
 Player.prototype = Object.create(ArcadeObjects); // inherits from ArcadeObjects
 Player.prototype.constructor = Player;
