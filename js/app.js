@@ -86,6 +86,18 @@ Player.prototype.render = function () {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+Player.prototype.handleInput = function(dir) {    // Change the player's position based on the user keyboard input
+	if (dir == 'up') {
+		this.y = this.y - 80;
+	} else if (dir == 'down') {
+		this.y = this.y + 80;
+	} else if (dir == 'left') {
+		this.x = this.x - 101;
+	} else if (dir == 'right') {
+		this.x = this.x + 101;
+	} 
+};
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
