@@ -1,6 +1,6 @@
 // Enemies our player must avoid
 
-const ArcadeObjects = function (x, y) {
+var ArcadeObjects = function (x, y) {
   this.x = 0;
   this.y = 0;
   this.startingPoint = 0;
@@ -8,9 +8,9 @@ const ArcadeObjects = function (x, y) {
   this.sprite;
 };
 
-const allEnemies = [];
+var allEnemies = [];
 
-const Enemy = function(x, y) {
+var Enemy = function(x, y) {
   ArcadeObjects.call(this, Enemy);
   this.sprite = 'images/enemy-bug.png';
   this.x = (Math.floor(Math.random() * (-1500)) + 2); // give it movement | y = 0
@@ -37,11 +37,11 @@ Enemy.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-const ladyBug1 = new Enemy();
-const ladyBug2 = new Enemy();
-const ladyBug3 = new Enemy();
-const ladyBug4 = new Enemy();
-const ladyBug5 = new Enemy();
+var ladyBug1 = new Enemy();
+var ladyBug2 = new Enemy();
+var ladyBug3 = new Enemy();
+var ladyBug4 = new Enemy();
+var ladyBug5 = new Enemy();
 allEnemies.push(ladyBug1);
 allEnemies.push(ladyBug2);
 allEnemies.push(ladyBug3);
@@ -52,7 +52,7 @@ allEnemies.push(ladyBug5);
 // This class requires an update(), render() and
 // a handleInput() method.
 
-const Player = function () {
+var Player = function () {
   ArcadeObjects.call(this, Player);
   this.sprite = 'images/char-boy.png';
   this.x = 200;
