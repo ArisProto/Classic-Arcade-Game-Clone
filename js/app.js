@@ -1,19 +1,14 @@
-// Enemies our player must avoid
-var allEnemies = [];
-
 var ArcadeObjects = function (x, y) {
-  this.startingPoint = 0;
-  this.endingPoint = 550;
   this.sprite;
   this.x = 0;
   this.y = 0;
 };
 
-var Enemy = function(x, y) {
-  ArcadeObjects.call(this, Enemy);
+var Enemy = function(x, y, speed) {
   this.sprite = 'images/enemy-bug.png';
-  // give it movement | y = 0
-  this.multiplier = Math.floor((Math.random() * 5) + 1);
+  this.x = x;
+  this.y = y;
+  this.speed = speed;
 };
 
 // inherits from ArcadeObjects
@@ -24,17 +19,9 @@ Enemy.prototype.constructor = Enemy;
 // Parameter: dt, a time delta between ticks
 
 Enemy.prototype.update = function (dt) {
-  this.y = 60;
-  for (let i = 0; i < allEnemies.length; i++) {
-    allEnemies[i].startingPoint = (Math.floor(Math.random() * (-2000)) + 2);
-    allEnemies[i].x += (50 * dt);
-    // y-coordinate of the enemy
-    allEnemies[i].y = allEnemies[i].y + 80;
-    if (allEnemies[i].y > 220) {
-        allEnemies[i].y = 60;
-    } if (allEnemies[i].x >= this.endingPoint) {
-      allEnemies[i].x = allEnemies[i].startingPoint;
-    }
+  this.x += this.speed * dt;
+  if (this.x >= 500) {
+    this.x=0;
   }
 };
 
@@ -43,7 +30,15 @@ Enemy.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-var ladyBug1 = new Enemy();
+// instantantiate objects
+var ladyBug1 = new Enemy(1, 60, 120);
+var ladyBug2 = new Enemy(1, 140, 160);
+var ladyBug3 = new Enemy(1, 220, 90)
+
+// Enemies our player must avoid
+var allEnemies = [ladyBug1, ladyBug2, ladyBug3];
+
+/*var ladyBug1 = new Enemy();
 var ladyBug2 = new Enemy();
 var ladyBug3 = new Enemy();
 var ladyBug4 = new Enemy();
@@ -52,7 +47,7 @@ allEnemies.push(ladyBug1);
 allEnemies.push(ladyBug2);
 allEnemies.push(ladyBug3);
 allEnemies.push(ladyBug4);
-allEnemies.push(ladyBug5);
+allEnemies.push(ladyBug5);*/
 
 var Player = function () {
   ArcadeObjects.call(this, Player);
@@ -98,7 +93,6 @@ Player.prototype.handleInput = function(direction) {
 
 // Reset the Player
 Player.prototype.reset = function() {
-  this.sprite = 'images/char-boy.png';
 	this.x = 200;
 	this.y = 380;
 };
