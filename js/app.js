@@ -96,21 +96,21 @@ Player.prototype.reset = function() {   // Reset the Player
 
 var player = new Player();
 
-function playerBoundries(x, y) {
+function playerBoundries(xA, yA) {
     var boundries = {
-        xStart: x,
-        xStop: x + 99,
-        yStart: y - 20,
-        yStop: y + 50,
+        xStart: xA,
+        xStop: xA + 98,
+        yStart: yA - 20,
+        yStop: yA + 50,
     }
     return boundries;
 }
 
 function checkForCollision(x, y) {
   var position = playerBoundries(x, y);
-  let padding = 37;
+  let padding = 35;
   allEnemies.forEach(bug => {
-    if ((bug.x + padding >= coords.xBegin - padding && bug.x + padding <= coords.xEnd - padding) && (bug.y >= coords.yBegin && bug.y <= coords.yEnd)) {
+    if ((bug.x + padding >= position.xStart - padding && bug.x + padding <= position.xStop - padding) && (bug.y >= position.yStart && bug.y <= position.yStop)) {
       player.reset();  // reset position after collision
     }
   });
