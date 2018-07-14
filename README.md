@@ -1,6 +1,11 @@
-frontend-nanodegree-arcade-game
-===============================
+#1 Classical Arcade Game Clone
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+Welcome to my first classical arcade game clone. It's an early version with the sole purpose of expanding my javascript skills. The game is currently in its early phase and thus very unpolished.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+Aim of the game is to use the arrow keys, to move through locusts in order to reach the water!
+
+To play, just downloadthe zip file, unzip it, and open the index.html file in your browser!
+
+Alternatively just click here: https://arisproto.github.io/Classic-Arcade-Game-Clone/
+
+Have fun!
