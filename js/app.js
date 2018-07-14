@@ -121,6 +121,16 @@ function checkForCollision(x, y) {
   return position.end;
 }
 
+
+var winningPositions = [[605,35], [505, 35], [404, 35], [303, 35], [202, 35], [101, 35], [001, 35]];
+
+if (Player.x && Player.y === winningPositions) {
+  win = true;
+  this.reset();
+} else {
+  win = false;
+};
+
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
