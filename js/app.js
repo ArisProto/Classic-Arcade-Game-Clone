@@ -2,9 +2,9 @@
 var allEnemies = [];
 
 var ArcadeObjects = function (x, y) {
-  this.sprite;
   this.startingPoint = 0;
   this.endingPoint = 550;
+  this.sprite;
   this.x = 0;
   this.y = 0;
 };
@@ -93,6 +93,7 @@ Player.prototype.handleInput = function(direction) {
   } else if (this.y == -20) {
     winGame();
   }
+  checkForCollision(this.x, this.y);
 };
 
 // Reset the Player
@@ -110,7 +111,7 @@ function playerBoundries(xA, yA) {
         xStop: xA + 98,
         yStart: yA - 20,
         yStop: yA + 50,
-    }
+    };
     return boundries;
 }
 
@@ -123,7 +124,6 @@ function checkForCollision(x, y) {
       player.reset();
     }
   });
-  return position.end;
 }
 
 // This listens for key presses and sends the keys to your
@@ -168,4 +168,4 @@ function winGame() {
   playAgain.title = "Play again";
   playAgain.href = "index.html";
   inside.appendChild(playAgain);
-};
+}
