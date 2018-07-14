@@ -33,7 +33,7 @@ Enemy.prototype.render = function() {
 // instantantiate objects
 var ladyBug1 = new Enemy(1, 60, 120);
 var ladyBug2 = new Enemy(1, 140, 160);
-var ladyBug3 = new Enemy(1, 220, 90)
+var ladyBug3 = new Enemy(1, 220, 90);
 
 // Enemies our player must avoid
 var allEnemies = [ladyBug1, ladyBug2, ladyBug3];
@@ -94,7 +94,7 @@ Player.prototype.collision = function (x, y) {
       player.reset();
     }
   });
-}
+};
 
 var player = new Player();
 
