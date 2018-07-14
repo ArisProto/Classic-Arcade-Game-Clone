@@ -1,5 +1,4 @@
 // Enemies our player must avoid
-
 var allEnemies = [];
 
 var ArcadeObjects = function (x, y) {
@@ -13,10 +12,12 @@ var ArcadeObjects = function (x, y) {
 var Enemy = function(x, y) {
   ArcadeObjects.call(this, Enemy);
   this.sprite = 'images/enemy-bug.png';
-  this.multiplier = Math.floor((Math.random() * 5) + 1); // give it movement | y = 0
+  // give it movement | y = 0
+  this.multiplier = Math.floor((Math.random() * 5) + 1);
 };
 
-Enemy.prototype = Object.create(ArcadeObjects.prototype);    // inherits from ArcadeObjects
+// inherits from ArcadeObjects
+Enemy.prototype = Object.create(ArcadeObjects.prototype);
 Enemy.prototype.constructor = Enemy;
 
 // Update the enemy's position, required method for game
@@ -27,7 +28,8 @@ Enemy.prototype.update = function (dt) {
   for (let i = 0; i < allEnemies.length; i++) {
     allEnemies[i].startingPoint = (Math.floor(Math.random() * (-2000)) + 2);
     allEnemies[i].x += (50 * dt);
-    allEnemies[i].y = allEnemies[i].y + 80;   // y-coordinate of the enemy
+    // y-coordinate of the enemy
+    allEnemies[i].y = allEnemies[i].y + 80;
     if (allEnemies[i].y > 220) {
         allEnemies[i].y = 60;
     } if (allEnemies[i].x >= this.endingPoint) {
@@ -36,7 +38,8 @@ Enemy.prototype.update = function (dt) {
   }
 };
 
-Enemy.prototype.render = function() {   // Draw the enemy on the screen, required method for game
+// Draw the enemy on the screen, required method for game
+Enemy.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
@@ -51,10 +54,6 @@ allEnemies.push(ladyBug3);
 allEnemies.push(ladyBug4);
 allEnemies.push(ladyBug5);
 
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
-
 var Player = function () {
   ArcadeObjects.call(this, Player);
   this.sprite = 'images/char-boy.png';
@@ -62,7 +61,8 @@ var Player = function () {
   this.y = 380;
 };
 
-Player.prototype = Object.create(ArcadeObjects); // inherits from ArcadeObjects
+// inherits from ArcadeObjects
+Player.prototype = Object.create(ArcadeObjects);
 Player.prototype.constructor = Player;
 
 Player.prototype.render = function () {
@@ -70,7 +70,8 @@ Player.prototype.render = function () {
   checkForCollision(this.x, this.y);
 };
 
-Player.prototype.handleInput = function(direction) {    // Change the player's position based on the user keyboard input
+// Change the player's position based on the user keyboard input
+Player.prototype.handleInput = function(direction) {
 	if (direction == 'up') {
 		this.y = this.y - 80;
 	} else if (direction == 'down') {
@@ -81,14 +82,16 @@ Player.prototype.handleInput = function(direction) {    // Change the player's p
 		this.x = this.x + 101;
 	} if (this.x < 0) {
 		this.x = 0;
-	} else if (this.x > 606) {
-		this.x = 606;
+	} else if (this.x > 404) {
+		this.x = 404;
   } else if (this.y > 404) {
-    this.reset();   // reset player to starting position if he moves down outside the canvas
+    // reset player to starting position if he moves down outside the canvas
+    this.reset();
   }
 };
 
-Player.prototype.reset = function() {   // Reset the Player
+// Reset the Player
+Player.prototype.reset = function() {
   this.sprite = 'images/char-boy.png';
 	this.x = 200;
 	this.y = 380;
@@ -111,7 +114,8 @@ function checkForCollision(x, y) {
   let padding = 35;
   allEnemies.forEach(bug => {
     if ((bug.x + padding >= position.xStart - padding && bug.x + padding <= position.xStop - padding) && (bug.y >= position.yStart && bug.y <= position.yStop)) {
-      player.reset();  // reset position after collision
+      // reset position after collision
+      player.reset();
     }
   });
   return position.end;
@@ -119,7 +123,6 @@ function checkForCollision(x, y) {
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
         37: 'left',
