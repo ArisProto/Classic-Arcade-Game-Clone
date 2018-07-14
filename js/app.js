@@ -70,6 +70,9 @@ Player.prototype.render = function () {
   checkForCollision(this.x, this.y);
 };
 
+// necessary for the win-window
+let container = document.querySelector('.container');
+
 // Change the player's position based on the user keyboard input
 Player.prototype.handleInput = function(direction) {
 	if (direction == 'up') {
@@ -87,6 +90,8 @@ Player.prototype.handleInput = function(direction) {
   } else if (this.y > 404) {
     // reset player to starting position if he moves down outside the canvas
     this.reset();
+  } else if (this.y == -20) {
+    winGame();
   }
 };
 
@@ -121,16 +126,6 @@ function checkForCollision(x, y) {
   return position.end;
 }
 
-
-var winningPositions = [[605,35], [505, 35], [404, 35], [303, 35], [202, 35], [101, 35], [001, 35]];
-
-if (Player.x && Player.y === winningPositions) {
-  win = true;
-  this.reset();
-} else {
-  win = false;
-};
-
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
@@ -143,3 +138,34 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+//winGame
+
+function winGame() {
+  // create html
+  const divHtml = document.createElement('div');
+  const h1Html = document.createElement('h1');
+
+  // give it a class
+  divHtml.setAttribute('class', 'finished');
+  const inside = document.createElement('div');
+  inside.setAttribute('class', 'finished-inner');
+  divHtml.appendChild(inside);
+
+  // insert it into the html
+  container.insertAdjacentElement('afterbegin', divHtml);
+  inside.appendChild(h1Html);
+
+  // add text
+  h1Html.innerText =
+  `Congratulations!
+  You Successfully Finished the Game!`;
+
+  // add play again button
+  const playAgain = document.createElement('a');
+  const playAgainText = document.createTextNode("Play again");
+  playAgain.appendChild(playAgainText);
+  playAgain.title = "Play again";
+  playAgain.href = "index.html";
+  inside.appendChild(playAgain);
+};

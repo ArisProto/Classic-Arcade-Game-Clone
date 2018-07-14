@@ -1,3 +1,35 @@
 body {
     text-align: center;
 }
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Win window */
+
+.finished {
+  position: absolute;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  z-index: 10;
+  background-color: rgba(88, 6, 94, 0.81)
+}
+
+.finished-inner {
+  position: relative;
+  top: 40%;
+  text-align: center;
+  color: rgba(255, 255, 255, 1);
+  font-size: 20px;
+}
+
+.finished-inner a {
+  padding: 2em;
+  color: black;
+}
