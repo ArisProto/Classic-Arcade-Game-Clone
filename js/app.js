@@ -5,8 +5,8 @@ var allEnemies = [];
 
 var ArcadeObjects = function (x, y) {
   this.sprite;
-  this.startPoint = 0;
-  this.endPoint = 550;
+  this.startingPoint = 0;
+  this.endingPoint = 550;
   this.x = 0;
   this.y = 0;
 };
@@ -26,22 +26,14 @@ Enemy.prototype.constructor = Enemy;
 Enemy.prototype.update = function (dt) {
   this.y = 60;
   for (let i = 0; i < allEnemies.length; i++) {
-    allEnemies[i].startPoint = (Math.floor(Math.random() * (-2000)) + 2);
-
+    allEnemies[i].startingPoint = (Math.floor(Math.random() * (-2000)) + 2);
     allEnemies[i].y = allEnemies[i].y + 80;   // y-coordinate of the enemy
-
     if (allEnemies[i].y > 220) {
         allEnemies[i].y = 60;
-    } if (allEnemies[i].x >= this.endPoint) {
-      allEnemies[i].x = allEnemies[i].startPoint;
+    } if (allEnemies[i].x >= this.endingPoint) {
+      allEnemies[i].x = allEnemies[i].startingPoint;
     }
   }
-};
-
-Enemy.prototype.reset = function() {
-	this.x = -200;
-	var speed = [240, 150, 40];
-	this.y = speed[Math.floor((Math.random() * 3))];
 };
 
 // Draw the enemy on the screen, required method for game
