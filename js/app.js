@@ -1,6 +1,5 @@
 // Enemies our player must avoid
 
-var speed = 15,
 var allEnemies = [];
 
 var ArcadeObjects = function (x, y) {
@@ -27,6 +26,7 @@ Enemy.prototype.update = function (dt) {
   this.y = 60;
   for (let i = 0; i < allEnemies.length; i++) {
     allEnemies[i].startingPoint = (Math.floor(Math.random() * (-2000)) + 2);
+    allEnemies[i].x += (50 * dt);
     allEnemies[i].y = allEnemies[i].y + 80;   // y-coordinate of the enemy
     if (allEnemies[i].y > 220) {
         allEnemies[i].y = 60;
@@ -67,7 +67,7 @@ Player.prototype.constructor = Player;
 
 Player.prototype.render = function () {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-  checkCollision(this.x, this.y);
+  checkForCollision(this.x, this.y);
 };
 
 Player.prototype.handleInput = function(direction) {    // Change the player's position based on the user keyboard input
