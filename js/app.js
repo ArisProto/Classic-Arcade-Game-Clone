@@ -1,24 +1,20 @@
 // Enemies our player must avoid
 
+var speed = 15,
 var allEnemies = [];
 
 var ArcadeObjects = function (x, y) {
   this.sprite;
+  this.startPoint = 0;
+  this.endPoint = 550;
   this.x = 0;
   this.y = 0;
-  this.startingPoint = 0;
-  this.endingPoint = 550;
 };
 
 var Enemy = function(x, y) {
   ArcadeObjects.call(this, Enemy);
   this.sprite = 'images/enemy-bug.png';
   this.multiplier = Math.floor((Math.random() * 5) + 1); // give it movement | y = 0
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
 };
 
 Enemy.prototype = Object.create(ArcadeObjects.prototype);    // inherits from ArcadeObjects
@@ -27,12 +23,18 @@ Enemy.prototype.constructor = Enemy;
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 
-Enemy.prototype.update = function(dt) {
-  this.x = this.x + 101 * dt * this.multiplier;
-  if (this.y == player.y && (this.x > player.x - 20 && this.x < player.x + 20)) {  // collision check
-	player.reset();    // Reset the player to her original position
-	} if (this.x > 750) {
-  	this.reset();    // Reset enemy after leaving the board
+Enemy.prototype.update = function (dt) {
+  this.y = 60;
+  for (let i = 0; i < allEnemies.length; i++) {
+    allEnemies[i].startPoint = (Math.floor(Math.random() * (-2000)) + 2);
+
+    allEnemies[i].y = allEnemies[i].y + 80;   // y-coordinate of the enemy
+
+    if (allEnemies[i].y > 220) {
+        allEnemies[i].y = 60;
+    } if (allEnemies[i].x >= this.endPoint) {
+      allEnemies[i].x = allEnemies[i].startPoint;
+    }
   }
 };
 
@@ -40,7 +42,6 @@ Enemy.prototype.reset = function() {
 	this.x = -200;
 	var speed = [240, 150, 40];
 	this.y = speed[Math.floor((Math.random() * 3))];
-	this.multiplier = Math.floor((Math.random() * 5) + 1);
 };
 
 // Draw the enemy on the screen, required method for game
@@ -99,7 +100,7 @@ Player.prototype.reset = function() {   // Reset the Player
   this.sprite = 'images/char-boy.png';
 	this.x = 200;
 	this.y = 380;
-}
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
