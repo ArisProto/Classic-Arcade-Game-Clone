@@ -99,6 +99,17 @@ Player.prototype.reset = function() {   // Reset the Player
 
 var player = new Player();
 
+function checkForCollision(x, y) {
+  var position = playerPositionRange(x, y);
+  let padding = 37;
+  allEnemies.forEach(bug => {
+    if ((bug.x + padding >= coords.xBegin - padding && bug.x + padding <= coords.xEnd - padding) && (bug.y >= coords.yBegin && bug.y <= coords.yEnd)) {
+      player.reset();  // reset position after collision
+    }
+  });
+  return position.end;
+}
+
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 
