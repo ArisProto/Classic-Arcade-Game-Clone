@@ -36,8 +36,7 @@ Enemy.prototype.update = function (dt) {
   }
 };
 
-// Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
+Enemy.prototype.render = function() {   // Draw the enemy on the screen, required method for game
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
@@ -68,6 +67,7 @@ Player.prototype.constructor = Player;
 
 Player.prototype.render = function () {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  checkCollision(this.x, this.y);
 };
 
 Player.prototype.handleInput = function(direction) {    // Change the player's position based on the user keyboard input
