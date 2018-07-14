@@ -94,13 +94,20 @@ Player.prototype.reset = function() {   // Reset the Player
 	this.y = 380;
 };
 
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-
 var player = new Player();
 
+function playerBoundries(x, y) {
+    var boundries = {
+        xStart: x,
+        xStop: x + 99,
+        yStart: y - 20,
+        yStop: y + 50,
+    }
+    return boundries;
+}
+
 function checkForCollision(x, y) {
-  var position = playerPositionRange(x, y);
+  var position = playerBoundries(x, y);
   let padding = 37;
   allEnemies.forEach(bug => {
     if ((bug.x + padding >= coords.xBegin - padding && bug.x + padding <= coords.xEnd - padding) && (bug.y >= coords.yBegin && bug.y <= coords.yEnd)) {
