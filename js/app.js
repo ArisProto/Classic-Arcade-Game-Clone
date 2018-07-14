@@ -38,17 +38,6 @@ var ladyBug3 = new Enemy(1, 220, 90)
 // Enemies our player must avoid
 var allEnemies = [ladyBug1, ladyBug2, ladyBug3];
 
-/*var ladyBug1 = new Enemy();
-var ladyBug2 = new Enemy();
-var ladyBug3 = new Enemy();
-var ladyBug4 = new Enemy();
-var ladyBug5 = new Enemy();
-allEnemies.push(ladyBug1);
-allEnemies.push(ladyBug2);
-allEnemies.push(ladyBug3);
-allEnemies.push(ladyBug4);
-allEnemies.push(ladyBug5);*/
-
 var Player = function () {
   ArcadeObjects.call(this, Player);
   this.sprite = 'images/char-boy.png';
