@@ -2,13 +2,6 @@ body {
     text-align: center;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
 /* Win window */
 
 .finished {
