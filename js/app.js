@@ -62,7 +62,6 @@ Player.prototype.constructor = Player;
 
 Player.prototype.render = function () {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-  checkForCollision(this.x, this.y);
 };
 
 // necessary for the win-window
@@ -88,7 +87,7 @@ Player.prototype.handleInput = function(direction) {
   } else if (this.y == -20) {
     winGame();
   }
-  checkForCollision(this.x, this.y);
+  this.collision(this.x, this.y);
 };
 
 // Reset the Player
@@ -96,6 +95,17 @@ Player.prototype.reset = function() {
 	this.x = 200;
 	this.y = 380;
 };
+
+Player.prototype.collision = function (x, y) {
+  var position = playerBoundries(x, y);
+  let padding = 35;
+  allEnemies.forEach(bug => {
+    if ((bug.x + padding >= position.xStart - padding && bug.x + padding <= position.xStop - padding) && (bug.y >= position.yStart && bug.y <= position.yStop)) {
+      // reset position after collision
+      player.reset();
+    }
+  });
+}
 
 var player = new Player();
 
@@ -107,17 +117,6 @@ function playerBoundries(xA, yA) {
         yStop: yA + 50,
     };
     return boundries;
-}
-
-function checkForCollision(x, y) {
-  var position = playerBoundries(x, y);
-  let padding = 35;
-  allEnemies.forEach(bug => {
-    if ((bug.x + padding >= position.xStart - padding && bug.x + padding <= position.xStop - padding) && (bug.y >= position.yStart && bug.y <= position.yStop)) {
-      // reset position after collision
-      player.reset();
-    }
-  });
 }
 
 // This listens for key presses and sends the keys to your
