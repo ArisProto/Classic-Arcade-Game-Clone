@@ -23,6 +23,12 @@ Enemy.prototype.update = function (dt) {
   if (this.x >= 500) {
     this.x=0;
   }
+  enemyBox = {x: this.x, y: this.y};
+  playerBox = {x: player.x, y: player.y};
+  if ((enemyBox.x < (playerBox.x + 60)) && ((enemyBox.x + 75) > playerBox.x) && (enemyBox.y < (playerBox.y + 63)) && ((80 + enemyBox.y) > playerBox.y)) {
+    console.log("reset");
+    setTimeout(player.reset(), 10000);
+  };
 };
 
 // Draw the enemy on the screen, required method for game
@@ -76,7 +82,7 @@ Player.prototype.handleInput = function(direction) {
   } else if (this.y == -20) {
     winGame();
   }
-  this.collision(this.x, this.y);
+  // this.collision(this.x, this.y);
 };
 
 // Reset the Player
@@ -85,6 +91,9 @@ Player.prototype.reset = function() {
 	this.y = 380;
 };
 
+// Removed player collision in favor of one inside Enemy Update
+
+/*
 Player.prototype.collision = function (x, y) {
   var position = playerBoundries(x, y);
   let padding = 35;
@@ -96,8 +105,6 @@ Player.prototype.collision = function (x, y) {
   });
 };
 
-var player = new Player();
-
 function playerBoundries(xA, yA) {
     var boundries = {
         xStart: xA,
@@ -106,7 +113,9 @@ function playerBoundries(xA, yA) {
         yStop: yA + 50,
     };
     return boundries;
-}
+  } */
+
+  var player = new Player();
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
